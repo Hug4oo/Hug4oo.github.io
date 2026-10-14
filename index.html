@@ -200,7 +200,7 @@ h2{margin:8px 0 12px;font-size:40px;line-height:1.15;font-weight:700}
 
 @media (prefers-reduced-motion:reduce){
   html{scroll-behavior:auto}
-  .js .reveal{opacity:1;transform:none;transition:none}
+  .js .reveal{transform:none;transition:opacity .8s ease;transition-delay:var(--d,0s)}
   .dot,.caret::after,.item,.shot img{animation:none}
 }
 @media (max-width:640px){
@@ -337,7 +337,7 @@ h2{margin:8px 0 12px;font-size:40px;line-height:1.15;font-weight:700}
       </div>
       <div class="frame">
         <div class="frame-bar"><i></i><i></i><i></i><span class="mono">meu-financeiro-delta-five.vercel.app</span></div>
-        <div class="shot"><img id="shotImg" src="dashboard.png" alt="" width="1911" height="1024"></div>
+        <div class="shot"><img id="shotImg" src="dashboard_1.png" alt="" width="1911" height="1024"></div>
       </div>
       <p class="shot-cap" id="shotCap"></p>
     </div>
@@ -409,11 +409,11 @@ h2{margin:8px 0 12px;font-size:40px;line-height:1.15;font-weight:700}
 <script>
 (function () {
   var reduce = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-  if (!reduce) document.documentElement.classList.add('js');
+  document.documentElement.classList.add('js');
 
   /* revelar ao rolar */
   var reveals = document.querySelectorAll('.reveal');
-  if ('IntersectionObserver' in window && !reduce) {
+  if ('IntersectionObserver' in window) {
     var io = new IntersectionObserver(function (entries) {
       entries.forEach(function (e) {
         if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); }
@@ -552,10 +552,10 @@ h2{margin:8px 0 12px;font-size:40px;line-height:1.15;font-weight:700}
 
   /* galeria do projeto */
   var SHOTS = [
-    { src: 'dashboard.png', alt: 'Dashboard do Meu Financeiro com o saldo disponível do dia 15 e do dia 30', cap: 'Dashboard: saldo disponível do dia 15 e do dia 30, lado a lado.' },
-    { src: 'onboarding.png', alt: 'Tela de configuração do primeiro mês', cap: 'Onboarding em 3 passos para configurar o primeiro mês.' },
-    { src: 'analises.png', alt: 'Tela de análises com gráficos de gastos por categoria e evolução do saldo', cap: 'Análises: gastos por categoria, entradas × saídas e evolução do saldo.' },
-    { src: 'novo-lancamento.png', alt: 'Formulário de novo lançamento', cap: 'Novo lançamento: valor, categoria, ciclo, parcelas e situação.' }
+    { src: 'dashboard_1.png', alt: 'Dashboard do Meu Financeiro com o saldo disponível do dia 15 e do dia 30', cap: 'Dashboard: saldo disponível do dia 15 e do dia 30, lado a lado.' },
+    { src: 'onboarding_1.png', alt: 'Tela de configuração do primeiro mês', cap: 'Onboarding em 3 passos para configurar o primeiro mês.' },
+    { src: 'analises_1.png', alt: 'Tela de análises com gráficos de gastos por categoria e evolução do saldo', cap: 'Análises: gastos por categoria, entradas × saídas e evolução do saldo.' },
+    { src: 'novo-lancamento_1.png', alt: 'Formulário de novo lançamento', cap: 'Novo lançamento: valor, categoria, ciclo, parcelas e situação.' }
   ];
   var tabs = document.querySelectorAll('.tab');
   var shotImg = document.getElementById('shotImg');
