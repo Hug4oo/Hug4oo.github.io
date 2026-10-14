@@ -86,6 +86,13 @@ h1 span{color:var(--soft)}
 .term-out .main{color:#DCE6F2;white-space:pre-wrap}
 .term-out .dim{color:var(--muted);white-space:pre-wrap}
 .term-out .hi{color:var(--soft);white-space:pre-wrap}
+.term-out .row{display:grid;grid-template-columns:104px 1fr;gap:14px;padding:9px 0;border-bottom:1px solid #1A2238;white-space:normal}
+.term-out .row:last-child{border-bottom:0}
+.term-out .row.solo{display:block}
+.term-out .k{color:var(--soft);font-size:13px;padding-top:3px}
+.term-out .v{color:#E6EBF7;font-family:system-ui,-apple-system,'Segoe UI',sans-serif;font-size:16px;line-height:1.45;overflow-wrap:anywhere}
+.term-out .row.dim .v{color:#C3CCE0}
+.term-out .row.hi .v,.term-out .row.solo.hi{color:var(--soft)}
 .caret::after{content:"";display:inline-block;width:8px;height:16px;margin-left:4px;vertical-align:-2px;background:var(--soft);animation:blink 1s steps(2) infinite}
 @keyframes blink{50%{opacity:0}}
 
@@ -208,6 +215,15 @@ h2{margin:8px 0 12px;font-size:40px;line-height:1.15;font-weight:700}
   h2{font-size:32px}
   .ticket{padding:20px}
   .contact{padding:32px 22px}
+  .term{flex-basis:100%;max-width:none}
+  .term-head{height:auto;min-height:40px;padding:10px 16px;flex-wrap:wrap}
+  .term-head span{flex-basis:100%;margin:2px 0 0;font-size:11px}
+  .chips{display:grid;grid-template-columns:1fr 1fr;gap:8px;padding:16px}
+  .chip{width:100%;font-size:14px}
+  .term-out{padding:6px 18px 20px;min-height:0}
+  .term-out .row{grid-template-columns:1fr;gap:2px}
+  .cta .btn{flex:1 1 100%;justify-content:center}
+  .cta .btn.ghost{flex:1 1 calc(50% - 6px);border-color:var(--line2)}
 }
 </style>
 </head>
@@ -388,7 +404,8 @@ h2{margin:8px 0 12px;font-size:40px;line-height:1.15;font-weight:700}
     <h2>Bora conversar?</h2>
     <p>Estou aberto a oportunidades em Infraestrutura e Suporte, com interesse em Segurança da Informação e Cloud.</p>
     <div class="cta">
-      <a class="btn primary" href="mailto:hugonick17@hotmail.com">hugonick17@hotmail.com</a>
+      <a class="btn primary" href="CV-Hugo-Fernandes-Costa.pdf" download="CV-Hugo-Fernandes-Costa.pdf">⬇ Baixar currículo (PDF)</a>
+      <a class="btn" href="mailto:hugonick17@hotmail.com">hugonick17@hotmail.com</a>
       <a class="btn" href="https://www.linkedin.com/in/hugo-fernandes-costa-b643aa242/" target="_blank" rel="noopener">LinkedIn</a>
       <a class="btn" href="https://github.com/Hug4oo" target="_blank" rel="noopener">GitHub</a>
     </div>
@@ -482,8 +499,16 @@ h2{margin:8px 0 12px;font-size:40px;line-height:1.15;font-weight:700}
     termOut.textContent = '';
     TERM[name].forEach(function (l) {
       var d = document.createElement('div');
-      d.className = l[1];
-      d.textContent = l[0];
+      var m = l[0].match(/^(\S+)\s{2,}(.+)$/);
+      if (m) {
+        d.className = 'row ' + l[1];
+        var k = document.createElement('span'); k.className = 'k'; k.textContent = m[1];
+        var v = document.createElement('span'); v.className = 'v'; v.textContent = m[2];
+        d.appendChild(k); d.appendChild(v);
+      } else {
+        d.className = 'row solo ' + l[1];
+        d.textContent = l[0];
+      }
       termOut.appendChild(d);
     });
   }
