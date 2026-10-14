@@ -1,0 +1,608 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Hugo Fernandes Costa · Infraestrutura e Suporte de TI</title>
+<meta name="description" content="Portfólio de Hugo Fernandes Costa, Analista de Infraestrutura e Suporte de TI em São Paulo, com foco em Segurança da Informação e Cloud.">
+<meta name="theme-color" content="#0B0C10">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Hugo Fernandes Costa · Infraestrutura e Suporte de TI">
+<meta property="og:description" content="Chamados do N1 ao N3, redes Cisco, Active Directory, Linux, AZ-900 e SC-900. Veja o Meu Financeiro e meus certificados.">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%234169E1'/%3E%3Ctext x='32' y='42' font-family='monospace' font-size='28' font-weight='700' fill='white' text-anchor='middle'%3Ehf%3C/text%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#0B0C10; --surface:#0F121A; --surface2:#11141D; --line:#232A40; --line2:#2A3350; --line3:#1B2030;
+  --blue:#4169E1; --soft:#6B8CF0; --text:#F2F4F8; --body:#C5CDDF; --muted:#8A93A6;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;background:var(--bg);color:var(--text);font-family:'Space Grotesk',system-ui,sans-serif;line-height:1.5;-webkit-font-smoothing:antialiased}
+a{color:var(--soft);text-decoration:none}
+a:hover{color:#9DB4FF}
+button{font:inherit;cursor:pointer}
+img{display:block}
+.mono{font-family:'JetBrains Mono',ui-monospace,monospace}
+.page{position:relative;overflow-x:clip}
+.wrap{position:relative;max-width:1180px;margin:0 auto;padding:0 28px}
+:focus-visible{outline:2px solid #9DB4FF;outline-offset:3px;border-radius:6px}
+
+/* progresso de scroll e fundo */
+.bar{position:fixed;left:0;top:0;width:100%;height:3px;background:var(--blue);transform:scaleX(0);transform-origin:0 50%;z-index:90}
+.bg-grid{position:absolute;left:0;top:0;width:100%;height:900px;pointer-events:none;
+  background-image:linear-gradient(rgba(120,140,190,.05) 1px,transparent 1px),linear-gradient(90deg,rgba(120,140,190,.05) 1px,transparent 1px);background-size:48px 48px}
+.glow{position:absolute;right:-200px;top:-260px;width:760px;height:760px;border-radius:50%;pointer-events:none;will-change:transform;
+  background:radial-gradient(circle,rgba(65,105,225,.22),rgba(65,105,225,0) 65%)}
+
+/* revelar ao rolar */
+.js .reveal{opacity:0;transform:translateY(42px);transition:opacity .7s ease,transform .7s cubic-bezier(.2,.7,.2,1);transition-delay:var(--d,0s)}
+.js .reveal.in{opacity:1;transform:none}
+
+/* nav */
+.nav{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:16px;padding:22px 0}
+.brand{display:flex;align-items:center;gap:12px;color:var(--text)}
+.brand:hover{color:var(--text)}
+.logo{width:40px;height:40px;border-radius:10px;background:var(--blue);display:flex;align-items:center;justify-content:center;font-weight:700;font-size:15px;color:#fff}
+.brand b{font-size:18px}
+.brand b span{color:var(--soft)}
+.links{display:flex;flex-wrap:wrap;gap:4px}
+.links a{padding:12px 14px;font-size:15px;color:#B8C4E0;border-radius:8px;transition:color .2s,background .2s}
+.links a:hover{color:#fff;background:#141A2B}
+
+/* botões */
+.btn{display:inline-flex;align-items:center;min-height:48px;padding:0 22px;border-radius:12px;border:1px solid var(--line2);background:var(--surface2);color:#E6EBF7;font-weight:600;font-size:16px;transition:transform .2s,border-color .2s,filter .2s}
+.btn:hover{transform:translateY(-2px);border-color:var(--soft);color:#fff}
+.btn.primary{background:var(--blue);border-color:var(--blue);color:#fff}
+.btn.primary:hover{filter:brightness(1.12)}
+.btn.ghost{background:transparent;border-color:transparent;padding:0 12px}
+
+/* hero */
+.hero{display:flex;flex-wrap:wrap;align-items:center;gap:48px;padding:56px 0 80px}
+.hero-text{flex:1 1 480px;min-width:0;display:flex;flex-direction:column;gap:22px}
+.pill{display:inline-flex;align-items:center;gap:10px;align-self:flex-start;padding:8px 14px;border:1px solid var(--line2);border-radius:999px;background:var(--surface2);font-size:13px;color:#B8C4E0}
+.dot{width:8px;height:8px;border-radius:50%;background:var(--blue);box-shadow:0 0 0 0 rgba(65,105,225,.6);animation:pulse 2.4s infinite}
+@keyframes pulse{70%{box-shadow:0 0 0 10px rgba(65,105,225,0)}100%{box-shadow:0 0 0 0 rgba(65,105,225,0)}}
+h1{margin:0;font-size:clamp(42px,6vw,76px);line-height:1.02;font-weight:700;letter-spacing:-1.5px}
+h1 span{color:var(--soft)}
+.role{font-size:22px;color:var(--body);font-weight:500}
+.lead{font-size:18px;color:var(--muted);max-width:560px}
+.cta{display:flex;flex-wrap:wrap;gap:12px;padding-top:6px}
+
+/* terminal */
+.term{flex:1 1 440px;max-width:540px;min-width:0;border:1px solid var(--line);border-radius:16px;background:var(--surface);overflow:hidden;box-shadow:0 30px 80px rgba(0,0,0,.45)}
+.term-head{display:flex;align-items:center;gap:8px;height:40px;padding:0 16px;border-bottom:1px solid #1D2540;background:#121827}
+.term-head i{width:10px;height:10px;border-radius:50%;background:#3A4A66}
+.term-head i:last-of-type{background:var(--blue)}
+.term-head span{margin-left:8px;font-size:12px;color:var(--muted)}
+.chips{display:flex;flex-wrap:wrap;gap:8px;padding:16px 20px 4px}
+.chip{font-family:'JetBrains Mono',ui-monospace,monospace;font-size:13px;min-height:44px;padding:0 14px;border-radius:8px;border:1px solid var(--line2);background:var(--surface2);color:#B8C4E0;transition:background .2s,border-color .2s}
+.chip:hover{border-color:var(--soft)}
+.chip.on{background:var(--blue);border-color:var(--blue);color:#fff}
+.term-out{padding:14px 24px 24px;min-height:230px;font-size:14px;line-height:1.7}
+.term-out .cmd{color:var(--soft);padding-bottom:6px}
+.term-out .main{color:#DCE6F2;white-space:pre-wrap}
+.term-out .dim{color:var(--muted);white-space:pre-wrap}
+.term-out .hi{color:var(--soft);white-space:pre-wrap}
+.caret::after{content:"";display:inline-block;width:8px;height:16px;margin-left:4px;vertical-align:-2px;background:var(--soft);animation:blink 1s steps(2) infinite}
+@keyframes blink{50%{opacity:0}}
+
+/* seções */
+section{padding:80px 0;border-top:1px solid var(--line3)}
+.kicker{font-size:13px;letter-spacing:2px;color:var(--soft)}
+h2{margin:8px 0 12px;font-size:40px;line-height:1.15;font-weight:700}
+.sub{font-size:18px;color:var(--muted);max-width:640px;margin:0 0 32px}
+
+/* sobre */
+.about{display:flex;flex-wrap:wrap;gap:48px;align-items:flex-start}
+.photo-col{flex:0 1 340px;min-width:0;display:flex;flex-direction:column;gap:12px}
+.photo{width:340px;max-width:100%;aspect-ratio:1/1;border-radius:24px;overflow:hidden;border:1px solid var(--line2);background:var(--surface2)}
+.photo img{width:100%;height:100%;object-fit:cover;object-position:50% 60%;transform:scale(1.3);transform-origin:50% 60%}
+.cap{font-size:12px;color:var(--muted)}
+.about-col{flex:1 1 520px;min-width:0;display:flex;flex-direction:column;gap:28px}
+.about-col p{margin:0;font-size:18px;color:var(--body)}
+.about-text{display:flex;flex-direction:column;gap:14px}
+.stats{display:flex;flex-wrap:wrap;gap:14px}
+.stat{flex:1 1 170px;padding:18px 20px;border:1px solid var(--line);border-radius:14px;background:var(--surface2)}
+.stat b{display:block;font-size:30px;color:var(--soft)}
+.stat span{font-size:14px;color:var(--muted)}
+.label{font-size:12px;letter-spacing:2px;color:var(--muted)}
+.tl{display:flex;flex-direction:column;gap:12px}
+.tl-row{display:flex;flex-wrap:wrap;gap:10px}
+.tl-item{flex:1 1 150px;padding:14px 16px;border-radius:12px;border:1px solid var(--line);background:var(--surface);transition:transform .2s,border-color .2s}
+.tl-item:hover{transform:translateY(-3px);border-color:var(--soft)}
+.tl-item.now{border-color:var(--blue)}
+.tl-item small{display:block;font-size:12px;color:var(--soft)}
+.tl-item strong{display:block;font-size:15px}
+.tl-item span{font-size:13px;color:var(--muted)}
+
+/* chamados */
+.controls{display:flex;flex-wrap:wrap;align-items:center;gap:10px;margin-bottom:18px}
+.lvl{font-size:16px;font-weight:600;min-height:48px;padding:0 20px;border-radius:12px;border:1px solid var(--line2);background:var(--surface2);color:#B8C4E0;transition:border-color .2s}
+.lvl:hover{border-color:var(--soft)}
+.lvl.on{background:var(--blue);border-color:var(--blue);color:#fff}
+.esc{font-family:'JetBrains Mono',ui-monospace,monospace;font-size:14px;min-height:48px;padding:0 18px;border-radius:12px;border:1px dashed #3A4A78;background:transparent;color:#9DB4FF;transition:background .2s}
+.esc:hover{background:#121A30}
+.segs{display:flex;gap:6px;margin-bottom:18px}
+.segs i{flex:1 1 0;height:6px;border-radius:3px;background:var(--line);transition:background .4s}
+.segs i.on{background:var(--blue)}
+.ticket{border:1px solid var(--line);border-radius:20px;background:var(--surface);padding:28px}
+.ticket-head{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:12px;padding-bottom:22px;margin-bottom:22px;border-bottom:1px solid var(--line3)}
+.ticket-title{display:flex;flex-wrap:wrap;align-items:baseline;gap:14px}
+.ticket-title code{font-size:14px;color:var(--soft)}
+.ticket-title strong{font-size:26px}
+.badge{font-size:13px;padding:7px 14px;border-radius:999px;border:1px solid var(--line2);background:var(--surface2);color:#B8C4E0}
+.items{display:flex;flex-wrap:wrap;gap:14px}
+.item{flex:1 1 320px;min-width:0;display:flex;gap:16px;padding:18px 20px;border-radius:14px;border:1px solid var(--line);background:var(--surface2);animation:rise .45s ease both}
+.item span{font-size:14px;color:var(--soft)}
+.item div{font-size:16px;color:#DCE3F2}
+@keyframes rise{from{opacity:0;transform:translateY(14px)}to{opacity:1;transform:none}}
+
+/* projeto */
+.proj-head{display:flex;flex-wrap:wrap;align-items:flex-end;justify-content:space-between;gap:20px;margin:8px 0 36px}
+.proj-head h2{margin:0 0 10px}
+.proj-head p{margin:0;font-size:18px;color:var(--muted);max-width:620px}
+.proj{display:flex;flex-wrap:wrap;gap:40px;align-items:flex-start}
+.viewer{flex:1 1 560px;min-width:0;display:flex;flex-direction:column;gap:14px}
+.tabs{display:flex;flex-wrap:wrap;gap:8px}
+.tab{font-size:14px;font-weight:600;min-height:44px;padding:0 16px;border-radius:10px;border:1px solid var(--line2);background:var(--surface2);color:#B8C4E0}
+.tab:hover{border-color:var(--soft)}
+.tab.on{background:var(--blue);border-color:var(--blue);color:#fff}
+.frame{border:1px solid var(--line);border-radius:16px;overflow:hidden;background:var(--surface)}
+.frame-bar{display:flex;align-items:center;gap:8px;height:38px;padding:0 14px;border-bottom:1px solid #1D2540;background:#121827}
+.frame-bar i{width:9px;height:9px;border-radius:50%;background:#3A4A66}
+.frame-bar span{margin-left:10px;font-size:12px;color:var(--muted)}
+.shot{aspect-ratio:16/10;background:var(--bg)}
+.shot img{width:100%;height:100%;object-fit:contain;animation:fade .4s ease both}
+@keyframes fade{from{opacity:0}to{opacity:1}}
+.shot-cap{font-size:15px;color:var(--muted);margin:0}
+.details{flex:1 1 360px;min-width:0;display:flex;flex-direction:column;gap:26px}
+.details p{margin:8px 0 0;font-size:17px;color:var(--body)}
+.sol{display:flex;flex-direction:column;gap:10px;margin-top:10px}
+.sol div{display:flex;gap:12px;font-size:16px;color:var(--body)}
+.sol div::before{content:"";flex:0 0 8px;height:8px;margin-top:9px;border-radius:50%;background:var(--blue)}
+.tags{display:flex;flex-wrap:wrap;gap:8px;margin-top:10px}
+.tags span{font-size:13px;padding:7px 12px;border-radius:8px;border:1px solid var(--line2);background:var(--surface2);color:#DCE6F2}
+.nums{display:flex;flex-wrap:wrap;gap:12px}
+.nums .stat{padding:16px 18px;flex:1 1 150px}
+.nums .stat b{font-size:28px}
+.nums .stat span{font-size:13px}
+.note{font-size:15px;color:var(--muted)}
+
+/* certificados */
+.certs{display:flex;flex-wrap:wrap;gap:20px}
+.cert{flex:1 1 300px;max-width:380px;min-width:0;padding:0;text-align:left;color:var(--text);border:1px solid var(--line);border-radius:16px;overflow:hidden;background:var(--surface);transition:transform .25s,border-color .25s}
+.cert:hover{transform:translateY(-4px);border-color:var(--soft)}
+.cert .thumb{aspect-ratio:4/3;background:#fff}
+.cert .thumb img{width:100%;height:100%;object-fit:contain}
+.cert .info{padding:16px 18px;display:flex;flex-direction:column;gap:2px}
+.cert .info strong{font-size:18px}
+.cert .info span{font-size:14px;color:#B8C4E0}
+.cert .info small{font-size:12px;color:var(--muted)}
+.todo{flex:1 1 300px;max-width:380px;min-width:0;padding:22px;border:1px dashed #3A4A78;border-radius:16px;background:#0D1019;display:flex;flex-direction:column;gap:12px}
+.todo small{font-size:12px;letter-spacing:1px;color:#9DB4FF}
+.todo strong{font-size:18px}
+.todo span{font-size:14px;color:#B8C4E0}
+
+/* contato */
+.contact{margin-top:24px;padding:44px 36px;border:1px solid var(--line2);border-radius:24px;background:var(--surface);display:flex;flex-direction:column;gap:20px;align-items:flex-start}
+.contact h2{margin:0;font-size:clamp(34px,5vw,56px);line-height:1.08}
+.contact p{margin:0;font-size:19px;color:#A9B4CC;max-width:640px}
+.foot{display:flex;flex-wrap:wrap;justify-content:space-between;gap:12px;padding:36px 0 0;font-size:12px;color:#6F7890}
+
+/* lightbox */
+.lb{position:fixed;inset:0;z-index:100;background:rgba(5,6,9,.92);display:flex;align-items:center;justify-content:center;padding:24px}
+.lb[hidden]{display:none}
+.lb-box{max-width:960px;width:100%;display:flex;flex-direction:column;gap:12px;align-items:flex-end}
+.lb img{width:100%;max-height:80vh;object-fit:contain;border-radius:12px;background:#fff}
+
+@media (prefers-reduced-motion:reduce){
+  html{scroll-behavior:auto}
+  .js .reveal{opacity:1;transform:none;transition:none}
+  .dot,.caret::after,.item,.shot img{animation:none}
+}
+@media (max-width:640px){
+  section{padding:56px 0}
+  h2{font-size:32px}
+  .ticket{padding:20px}
+  .contact{padding:32px 22px}
+}
+</style>
+</head>
+<body>
+<div class="bar" id="bar" aria-hidden="true"></div>
+<div class="page" id="topo">
+<div class="bg-grid" aria-hidden="true"></div>
+<div class="glow" id="glow" aria-hidden="true"></div>
+
+<div class="wrap">
+<header class="nav">
+  <a class="brand" href="#topo" aria-label="Início">
+    <div class="logo mono">hf</div>
+    <b>Hugo <span>Costa</span></b>
+  </a>
+  <nav class="links" aria-label="Seções">
+    <a href="#sobre">Sobre</a>
+    <a href="#chamados">Chamados</a>
+    <a href="#projeto">Projeto</a>
+    <a href="#certificados">Certificados</a>
+    <a href="#contato">Contato</a>
+  </nav>
+</header>
+
+<main>
+<div class="hero">
+  <div class="hero-text">
+    <div class="pill mono"><span class="dot"></span><span>aberto a oportunidades · São Paulo</span></div>
+    <h1>Hugo Fernandes <span>Costa</span></h1>
+    <div class="role">Analista de Infraestrutura e Suporte de TI</div>
+    <div class="lead">Resolvo chamados do N1 ao N3 e estou construindo meu caminho em Segurança e Cloud. Aqui está o que eu faço, o que construí e o que aprendi até agora.</div>
+    <div class="cta">
+      <a class="btn primary" href="#chamados">Ver meus chamados</a>
+      <a class="btn" href="#projeto">Meu Financeiro</a>
+      <a class="btn ghost" href="https://github.com/Hug4oo" target="_blank" rel="noopener">GitHub</a>
+      <a class="btn ghost" href="https://www.linkedin.com/in/hugo-fernandes-costa-b643aa242/" target="_blank" rel="noopener">LinkedIn</a>
+    </div>
+  </div>
+
+  <div class="term mono">
+    <div class="term-head"><i></i><i></i><i></i><span>hugo@servicedesk ~ clique em um comando</span></div>
+    <div class="chips" role="group" aria-label="Comandos do terminal">
+      <button type="button" class="chip" data-cmd="whoami">$ whoami</button>
+      <button type="button" class="chip" data-cmd="skills">$ skills</button>
+      <button type="button" class="chip" data-cmd="stack">$ stack</button>
+      <button type="button" class="chip" data-cmd="contato">$ contato</button>
+    </div>
+    <div class="term-out" aria-live="polite">
+      <div class="cmd caret" id="termCmd">$ whoami</div>
+      <div id="termOut"></div>
+    </div>
+  </div>
+</div>
+
+<section id="sobre">
+  <div class="kicker mono reveal">// 01 · SOBRE</div>
+  <h2 class="reveal">Quem resolve o chamado</h2>
+  <div class="about" style="margin-top:28px">
+    <div class="photo-col reveal">
+      <div class="photo"><img src="foto-hugo.jpg" alt="Hugo Fernandes Costa sorrindo no evento da Cisco em São Paulo" width="960" height="1280"></div>
+      <div class="cap mono">no evento da Cisco, em São Paulo</div>
+    </div>
+    <div class="about-col">
+      <div class="about-text reveal">
+        <p>Atuo como Analista de Suporte de TI na UOL desde junho de 2025, resolvendo incidentes e requisições nos níveis N1, N2 e N3. Minha rotina passa por redes Cisco, VPN, Active Directory, SharePoint Online e sistemas Linux, Windows e macOS.</p>
+        <p>Sou formado em Gestão da Tecnologia da Informação pelo Senac e venho me aprofundando em Segurança da Informação e Cloud: tenho as certificações Microsoft AZ-900 e SC-900 e fiz trilhas práticas de segurança e pentest no TryHackMe.</p>
+        <p>Para praticar o que aprendo, construí o Meu Financeiro, um app que está no ar com usuários reais.</p>
+      </div>
+      <div class="stats">
+        <div class="stat reveal" style="--d:.05s"><b>N1 · N2 · N3</b><span>níveis de suporte no dia a dia</span></div>
+        <div class="stat reveal" style="--d:.15s"><b>2</b><span>certificações Microsoft: AZ-900 e SC-900</span></div>
+        <div class="stat reveal" style="--d:.25s"><b>70</b><span>testes automatizados no Meu Financeiro</span></div>
+      </div>
+      <div class="tl">
+        <div class="label mono reveal">TRAJETÓRIA</div>
+        <div class="tl-row">
+          <div class="tl-item reveal" style="--d:.0s"><small class="mono">2021 – 2022</small><strong>Aprendiz, Comercial e Vendas</strong><span>Coca-Cola FEMSA</span></div>
+          <div class="tl-item reveal" style="--d:.08s"><small class="mono">2023 – 2024</small><strong>Assistente administrativo financeiro</strong><span>NaEstrada Produções</span></div>
+          <div class="tl-item reveal" style="--d:.16s"><small class="mono">2024 – 2025</small><strong>Assistente financeiro</strong><span>Julio Auto Peças</span></div>
+          <div class="tl-item now reveal" style="--d:.24s"><small class="mono">2025 → hoje</small><strong>Analista de Suporte de TI</strong><span>UOL</span></div>
+          <div class="tl-item reveal" style="--d:.32s"><small class="mono">2026</small><strong>Gestão da TI concluída</strong><span>Senac São Paulo</span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="chamados">
+  <div class="kicker mono reveal">// 02 · CHAMADOS</div>
+  <h2 class="reveal">Fila de chamados</h2>
+  <p class="sub reveal">Do atendimento à infraestrutura. Escale o chamado e veja o que acontece em cada nível.</p>
+  <div class="controls reveal" role="group" aria-label="Nível do chamado">
+    <button type="button" class="lvl" data-level="1">N1 · Atendimento</button>
+    <button type="button" class="lvl" data-level="2">N2 · Resolução</button>
+    <button type="button" class="lvl" data-level="3">N3 · Infraestrutura</button>
+    <button type="button" class="esc" id="esc"></button>
+  </div>
+  <div class="segs reveal" aria-hidden="true"><i></i><i></i><i></i></div>
+  <div class="ticket reveal">
+    <div class="ticket-head">
+      <div class="ticket-title"><code class="mono" id="tId"></code><strong id="tTitle"></strong></div>
+      <div class="badge mono" id="tBadge"></div>
+    </div>
+    <div class="items" id="tItems" aria-live="polite"></div>
+  </div>
+</section>
+
+<section id="projeto">
+  <div class="kicker mono reveal">// 03 · PROJETO</div>
+  <div class="proj-head reveal">
+    <div>
+      <h2>Meu Financeiro</h2>
+      <p>App de finanças pessoais (web e PWA) que responde a uma pergunta: quanto sobra no dia 15 e no dia 30?</p>
+    </div>
+    <div class="cta">
+      <a class="btn primary" href="https://meu-financeiro-delta-five.vercel.app" target="_blank" rel="noopener">Abrir o app</a>
+      <a class="btn" href="https://github.com/Hug4oo/MEU-FINANCEIRO" target="_blank" rel="noopener">Ver no GitHub</a>
+    </div>
+  </div>
+  <div class="proj">
+    <div class="viewer reveal">
+      <div class="tabs" role="group" aria-label="Telas do app">
+        <button type="button" class="tab" data-shot="0">Dashboard</button>
+        <button type="button" class="tab" data-shot="1">Configuração</button>
+        <button type="button" class="tab" data-shot="2">Análises</button>
+        <button type="button" class="tab" data-shot="3">Novo lançamento</button>
+      </div>
+      <div class="frame">
+        <div class="frame-bar"><i></i><i></i><i></i><span class="mono">meu-financeiro-delta-five.vercel.app</span></div>
+        <div class="shot"><img id="shotImg" src="dashboard.png" alt="" width="1911" height="1024"></div>
+      </div>
+      <p class="shot-cap" id="shotCap"></p>
+    </div>
+    <div class="details reveal" style="--d:.1s">
+      <div><div class="label mono">PROBLEMA</div><p>Quem recebe quinzenalmente precisa saber quanto está livre em cada pagamento. Planilhas e apps genéricos não separam os dois ciclos.</p></div>
+      <div><div class="label mono">SOLUÇÃO</div>
+        <div class="sol">
+          <div>Saldo disponível calculado por ciclo, sem mistura entre o dia 15 e o dia 30</div>
+          <div>Parcelas no mês certo e contas recorrentes lançadas automaticamente</div>
+          <div>Entradas “a receber” até a confirmação, categorias editáveis e reserva de emergência com projeção</div>
+          <div>Tema claro e escuro, modo “ocultar valores” e instalação como PWA</div>
+        </div>
+      </div>
+      <div><div class="label mono">STACK</div>
+        <div class="tags mono"><span>Next.js 15</span><span>TypeScript</span><span>Tailwind</span><span>Supabase</span><span>PostgreSQL</span><span>Recharts</span><span>Vitest</span><span>Vercel</span></div>
+      </div>
+      <div class="nums">
+        <div class="stat"><b>31</b><span>testes de isolamento entre usuários (Row Level Security)</span></div>
+        <div class="stat"><b>39</b><span>testes da lógica financeira</span></div>
+      </div>
+      <div class="note">Valores em centavos inteiros, sem erro de arredondamento. No ar, com usuários reais testando.</div>
+    </div>
+  </div>
+</section>
+
+<section id="certificados">
+  <div class="kicker mono reveal">// 04 · CERTIFICADOS</div>
+  <h2 class="reveal">Cursos e certificações</h2>
+  <p class="sub reveal">Clique em um certificado para ver em tamanho grande.</p>
+  <div class="certs">
+    <button type="button" class="cert reveal" data-full="certificado-linux.jpg" data-alt="Certificado do curso de Linux de 40 horas, Curso em Vídeo">
+      <div class="thumb"><img src="certificado-linux.jpg" alt="Certificado do curso de Linux de 40 horas, Curso em Vídeo" loading="lazy"></div>
+      <div class="info"><strong>Linux · 40 horas</strong><span>Curso em Vídeo</span><small class="mono">concluído em 13/10/2025</small></div>
+    </button>
+    <button type="button" class="cert reveal" style="--d:.1s" data-full="certificado-phishing.jpg" data-alt="Certificado do curso Segurança da Informação e Phishing, Grupo UOL">
+      <div class="thumb"><img src="certificado-phishing.jpg" alt="Certificado do curso Segurança da Informação e Phishing, Grupo UOL" loading="lazy"></div>
+      <div class="info"><strong>Segurança da Informação e Phishing</strong><span>Grupo UOL · 1 hora</span><small class="mono">2 de junho de 2025</small></div>
+    </button>
+    <div class="todo reveal" style="--d:.2s"><small class="mono">CERTIFICADO A ANEXAR</small><strong>Microsoft AZ-900</strong><span>Azure Fundamentals</span></div>
+    <div class="todo reveal" style="--d:.1s"><small class="mono">CERTIFICADO A ANEXAR</small><strong>Microsoft SC-900</strong><span>Security, Compliance and Identity Fundamentals</span></div>
+    <div class="todo reveal" style="--d:.2s"><small class="mono">CERTIFICADO A ANEXAR</small><strong>TryHackMe</strong><span>Trilhas práticas de segurança e pentest</span></div>
+  </div>
+</section>
+
+<section id="contato" style="padding-bottom:56px">
+  <div class="kicker mono reveal">// 05 · CONTATO</div>
+  <div class="contact reveal">
+    <h2>Bora conversar?</h2>
+    <p>Estou aberto a oportunidades em Infraestrutura e Suporte, com interesse em Segurança da Informação e Cloud.</p>
+    <div class="cta">
+      <a class="btn primary" href="mailto:hugonick17@hotmail.com">hugonick17@hotmail.com</a>
+      <a class="btn" href="https://www.linkedin.com/in/hugo-fernandes-costa-b643aa242/" target="_blank" rel="noopener">LinkedIn</a>
+      <a class="btn" href="https://github.com/Hug4oo" target="_blank" rel="noopener">GitHub</a>
+    </div>
+  </div>
+  <footer class="foot mono"><div>Hugo Fernandes Costa · São Paulo, Brasil</div><div>portfólio · 2026</div></footer>
+</section>
+</main>
+</div>
+</div>
+
+<div class="lb" id="lb" hidden role="dialog" aria-modal="true" aria-label="Certificado ampliado">
+  <div class="lb-box">
+    <button type="button" class="btn" id="lbClose">Fechar</button>
+    <img id="lbImg" src="" alt="">
+  </div>
+</div>
+
+<script>
+(function () {
+  var reduce = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  if (!reduce) document.documentElement.classList.add('js');
+
+  /* revelar ao rolar */
+  var reveals = document.querySelectorAll('.reveal');
+  if ('IntersectionObserver' in window && !reduce) {
+    var io = new IntersectionObserver(function (entries) {
+      entries.forEach(function (e) {
+        if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); }
+      });
+    }, { threshold: 0.12, rootMargin: '0px 0px -6% 0px' });
+    reveals.forEach(function (el) { io.observe(el); });
+  } else {
+    reveals.forEach(function (el) { el.classList.add('in'); });
+  }
+
+  /* barra de progresso e brilho que acompanha o scroll */
+  var bar = document.getElementById('bar');
+  var glow = document.getElementById('glow');
+  var ticking = false;
+  function onScroll() {
+    if (ticking) return;
+    ticking = true;
+    requestAnimationFrame(function () {
+      var max = document.documentElement.scrollHeight - window.innerHeight;
+      var y = window.scrollY || window.pageYOffset;
+      bar.style.transform = 'scaleX(' + (max > 0 ? Math.min(1, y / max) : 0) + ')';
+      if (!reduce) glow.style.transform = 'translateY(' + Math.min(y * 0.25, 260) + 'px)';
+      ticking = false;
+    });
+  }
+  window.addEventListener('scroll', onScroll, { passive: true });
+  onScroll();
+
+  /* terminal */
+  var TERM = {
+    whoami: [
+      ['hugo.fernandes.costa', 'main'],
+      ['cargo     Analista de Suporte de TI (N1, N2 e N3) · UOL', 'dim'],
+      ['formação  Gestão da TI · Senac São Paulo (concluído)', 'dim'],
+      ['local     São Paulo, Brasil', 'dim']
+    ],
+    skills: [
+      ['redes      Cisco · 802.1x · VLAN · VPN SSL', 'main'],
+      ['sistemas   Linux · Windows · macOS', 'main'],
+      ['acessos    Active Directory · SharePoint Online', 'main'],
+      ['chamados   Jira · RFCs/RDMs · escalonamento', 'main'],
+      ['cloud/sec  Azure (AZ-900) · SC-900 · TryHackMe', 'hi']
+    ],
+    stack: [
+      ['next.js 15 · typescript · tailwind', 'main'],
+      ['supabase (postgres, auth, rls)', 'main'],
+      ['recharts · vitest · vercel', 'main'],
+      ['→ meu financeiro, no ar com usuários reais', 'hi']
+    ],
+    contato: [
+      ['email     hugonick17@hotmail.com', 'main'],
+      ['linkedin  /in/hugo-fernandes-costa-b643aa242', 'main'],
+      ['github    /Hug4oo', 'main']
+    ]
+  };
+  var chips = document.querySelectorAll('.chip');
+  var termCmd = document.getElementById('termCmd');
+  var termOut = document.getElementById('termOut');
+  function renderTerm(name) {
+    chips.forEach(function (b) {
+      var on = b.getAttribute('data-cmd') === name;
+      b.classList.toggle('on', on);
+      b.setAttribute('aria-pressed', on ? 'true' : 'false');
+    });
+    termCmd.textContent = '$ ' + name;
+    termOut.textContent = '';
+    TERM[name].forEach(function (l) {
+      var d = document.createElement('div');
+      d.className = l[1];
+      d.textContent = l[0];
+      termOut.appendChild(d);
+    });
+  }
+  chips.forEach(function (b) {
+    b.addEventListener('click', function () { renderTerm(b.getAttribute('data-cmd')); });
+  });
+  renderTerm('whoami');
+
+  /* fila de chamados */
+  var LEVELS = [
+    { id: '#CH-001', title: 'Primeiro atendimento', badge: 'N1 · em atendimento', items: [
+      'Primeiro nível por voz e chat',
+      'Registro, acompanhamento e escalonamento de chamados',
+      'Disponibilização de equipamentos, remanejamentos e troca de periféricos',
+      'Instalação e formatação de Windows, Linux e macOS'
+    ] },
+    { id: '#CH-002', title: 'Resolução técnica', badge: 'N2 · escalado', items: [
+      'Incidentes e requisições resolvidos por acesso remoto',
+      'Gestão de chamados no Jira: incidentes, requisições de serviço e RFCs/RDMs',
+      'Contas e acessos no SharePoint Online',
+      'VPN SSL corporativa e sistemas financeiros e jurídicos (SAP, Espaider, CRM)'
+    ] },
+    { id: '#CH-003', title: 'Infraestrutura e segurança', badge: 'N3 · escalado para infraestrutura', items: [
+      'Switches Cisco: protocolo 802.1x e alteração de VLANs de acesso e de voz',
+      'Troubleshooting avançado de hardware e software',
+      'Tratativas com Segurança, Redes, Callcenter e demais áreas técnicas'
+    ] }
+  ];
+  var level = 1;
+  var lvlBtns = document.querySelectorAll('.lvl');
+  var segs = document.querySelectorAll('.segs i');
+  var esc = document.getElementById('esc');
+  function renderLevel() {
+    var cur = LEVELS[level - 1];
+    lvlBtns.forEach(function (b) {
+      var on = Number(b.getAttribute('data-level')) === level;
+      b.classList.toggle('on', on);
+      b.setAttribute('aria-pressed', on ? 'true' : 'false');
+    });
+    segs.forEach(function (s, i) { s.classList.toggle('on', i < level); });
+    document.getElementById('tId').textContent = cur.id;
+    document.getElementById('tTitle').textContent = cur.title;
+    document.getElementById('tBadge').textContent = cur.badge;
+    var box = document.getElementById('tItems');
+    box.textContent = '';
+    cur.items.forEach(function (t, i) {
+      var row = document.createElement('div');
+      row.className = 'item';
+      row.style.animationDelay = (i * 0.07) + 's';
+      var n = document.createElement('span');
+      n.className = 'mono';
+      n.textContent = '0' + (i + 1);
+      var tx = document.createElement('div');
+      tx.textContent = t;
+      row.appendChild(n);
+      row.appendChild(tx);
+      box.appendChild(row);
+    });
+    esc.textContent = level < 3 ? '$ escalar para N' + (level + 1) : '$ reabrir no N1';
+  }
+  lvlBtns.forEach(function (b) {
+    b.addEventListener('click', function () { level = Number(b.getAttribute('data-level')); renderLevel(); });
+  });
+  esc.addEventListener('click', function () { level = level < 3 ? level + 1 : 1; renderLevel(); });
+  renderLevel();
+
+  /* galeria do projeto */
+  var SHOTS = [
+    { src: 'dashboard.png', alt: 'Dashboard do Meu Financeiro com o saldo disponível do dia 15 e do dia 30', cap: 'Dashboard: saldo disponível do dia 15 e do dia 30, lado a lado.' },
+    { src: 'onboarding.png', alt: 'Tela de configuração do primeiro mês', cap: 'Onboarding em 3 passos para configurar o primeiro mês.' },
+    { src: 'analises.png', alt: 'Tela de análises com gráficos de gastos por categoria e evolução do saldo', cap: 'Análises: gastos por categoria, entradas × saídas e evolução do saldo.' },
+    { src: 'novo-lancamento.png', alt: 'Formulário de novo lançamento', cap: 'Novo lançamento: valor, categoria, ciclo, parcelas e situação.' }
+  ];
+  var tabs = document.querySelectorAll('.tab');
+  var shotImg = document.getElementById('shotImg');
+  var shotCap = document.getElementById('shotCap');
+  function renderShot(i) {
+    var s = SHOTS[i];
+    tabs.forEach(function (b) {
+      var on = Number(b.getAttribute('data-shot')) === i;
+      b.classList.toggle('on', on);
+      b.setAttribute('aria-pressed', on ? 'true' : 'false');
+    });
+    var img = shotImg.cloneNode(false);
+    img.src = s.src;
+    img.alt = s.alt;
+    shotImg.parentNode.replaceChild(img, shotImg);
+    shotImg = img;
+    shotCap.textContent = s.cap;
+  }
+  tabs.forEach(function (b) {
+    b.addEventListener('click', function () { renderShot(Number(b.getAttribute('data-shot'))); });
+  });
+  renderShot(0);
+
+  /* certificados em tela cheia */
+  var lb = document.getElementById('lb');
+  var lbImg = document.getElementById('lbImg');
+  var lbClose = document.getElementById('lbClose');
+  var lastFocus = null;
+  function openLb(btn) {
+    lastFocus = btn;
+    lbImg.src = btn.getAttribute('data-full');
+    lbImg.alt = btn.getAttribute('data-alt') || '';
+    lb.hidden = false;
+    lbClose.focus();
+  }
+  function closeLb() {
+    lb.hidden = true;
+    lbImg.src = '';
+    if (lastFocus) lastFocus.focus();
+  }
+  document.querySelectorAll('.cert').forEach(function (b) {
+    b.addEventListener('click', function () { openLb(b); });
+  });
+  lbClose.addEventListener('click', closeLb);
+  lb.addEventListener('click', function (e) { if (e.target === lb) closeLb(); });
+  document.addEventListener('keydown', function (e) { if (e.key === 'Escape' && !lb.hidden) closeLb(); });
+})();
+</script>
+</body>
+</html>
